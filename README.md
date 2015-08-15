@@ -1,3 +1,6 @@
+### Gill-Hall Graphics (GHG)
+
+Here we introduce our graphics theme.  The theme is intended to improve upon the R base defaults in a variety of ways.
 
 ### Working Example
 
