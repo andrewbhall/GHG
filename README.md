@@ -2,15 +2,18 @@
 
 Here we introduce our graphics theme.  The theme is intended to improve upon the R base defaults in a variety of ways.
 
+Our approach is based on several goals.  First, we wanted more logical defaults than the ones included in base, which offer ugly looking point styles (in our opinion), annoying axis labels, axis tick marks that are way too long, and a variety of other similar problems.  Second, we wanted to keep the simple syntax and logic of base (others will prefer to use ggplot which is of course fine).  Finally, we wanted to make it easy to change the colors of points, lines, and especially the plot background and gridlines.  The result of these ideas is the plot.gh function (or, if you will, "ghplot"!).
+
+
 ### Working Example
 
-To get started, we need to make sure we have our functions loaded.
+To get started, we load in plot.gh as well as several helper functions.
 
 ```{r}
 source("GHG.R")
 ```
 
-First, we make some test data
+Next, we make some test data
 
 ```{r}
 set.seed(94304)
