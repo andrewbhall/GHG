@@ -33,15 +33,15 @@ loessCI <- function(x, y, line_col="gray40", t_stat=NULL, span=NULL, trans_level
   comp_lower <- comp_out $fit-t_stat* comp_out$se.fit
   comp_upper <- comp_out $fit+t_stat* comp_out$se.fit
   polygon(c(sort(x_input), rev(sort(x_input))),  c(comp_lower, rev(comp_upper)), col= ifelse(is.null(line_col)==T, makeTransparent(loess.color, trans_level), makeTransparent(loess.color, trans_level)), border= ifelse(is.null(line_col)==T, makeTransparent(loess.color, trans_level), makeTransparent(loess.color, trans_level)))
-  lines(x=x_input, y=comp_out$fit, col=line_col, lty=2, lwd=2, lend=2)
+  lines(x=x_input, y=comp_out$fit, col=line_col, lty=1, lwd=2, lend=2)
 }
 
 ### function to produce nice plots
 ### preserves most defaults through "..."
 ### defaults labels to blank, axes to missing, makes points look nice
-plot.gh <- function(..., xlab="", ylab="", xaxt="n", yaxt="n", pch=21, bg="gray87", col="gray30", x_seq = NULL,  y_seq = NULL, bty=NULL, rect_col=NULL, do_axes=NULL, do_seq=T, outer.box=F, outer.box.col="black", grid_col="gray70", point.size=1.3) {
+plot.gh <- function(..., xlab="", ylab="", xaxt="n", yaxt="n", pch=21, bg="gray92", col="gray30",bor_col="white", x_seq = NULL,  y_seq = NULL, bty=NULL, rect_col="white", do_axes=NULL, do_seq=T, outer.box=F, outer.box.col="black", grid_col="gray70", point.size=1.3) {
   plot(..., xlab=xlab, ylab=ylab, xaxt=xaxt, yaxt=yaxt, pch=pch, bg=bg,  bty="n")
-  rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = ifelse(is.null(rect_col),"peachpuff1", rect_col), border= ifelse(is.null(rect_col),"white", rect_col))
+  rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = rect_col, border= bor_col)
   # Draw sequences in background
   if(do_seq!=F){
     abline(v= seq(par("xaxp")[1], par("xaxp")[2], length.out=par("xaxp")[3]+1), col=grid_col)

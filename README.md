@@ -18,7 +18,15 @@ X <- 1:300
 Y <-  .0002*X - .003*X^2 + rnorm(n=length(X), mean=0, sd=100)
 ```
 
-Then, we create some plots.
+First, here's the default plot.
+
+```{r}
+par.gh()
+plot.gh(X, Y)
+loessCI(X, Y)
+```
+
+![Example0](example_main.png)
 
 ```{r}
 pdf(file="example.pdf", height=6, width=8)
