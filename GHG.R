@@ -22,7 +22,7 @@ add_legend <- function(...) {
 }
 
 ### Loess line with CI overlay
-loessCI <- function(x, y, line_col="gray40", t_stat=NULL, span=NULL, trans_level=NULL, poly_col="gray85"){
+loessCI <- function(x, y, line_col="black", t_stat=NULL, span=NULL, trans_level=NULL, poly_col="gray70"){
   loess.color <- poly_col
   y_input <- y
   x_input <- x
@@ -39,7 +39,7 @@ loessCI <- function(x, y, line_col="gray40", t_stat=NULL, span=NULL, trans_level
 ### function to produce nice plots
 ### preserves most defaults through "..."
 ### defaults labels to blank, axes to missing, makes points look nice
-plot.gh <- function(..., xlab="", ylab="", xaxt="n", yaxt="n", pch=21, bg="gray92", col="gray30",bor_col="white", x_seq = NULL,  y_seq = NULL, bty=NULL, rect_col="white", do_axes=NULL, do_seq=T, outer.box=F, outer.box.col="black", grid_col="gray70", point.size=1.3) {
+plot.gh <- function(..., xlab="", ylab="", xaxt="n", yaxt="n", pch=21, bg="gray80", col="black",bor_col="white", x_seq = NULL,  y_seq = NULL, bty=NULL, rect_col="gray90", do_axes=NULL, do_seq=T, outer.box=F, outer.box.col="black", grid_col="white", point.size=1.3) {
   plot(..., xlab=xlab, ylab=ylab, xaxt=xaxt, yaxt=yaxt, pch=pch, bg=bg,  bty="n")
   rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = rect_col, border= bor_col)
   # Draw sequences in background

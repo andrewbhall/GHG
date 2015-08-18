@@ -18,7 +18,7 @@ X <- 1:300
 Y <-  .0002*X - .003*X^2 + rnorm(n=length(X), mean=0, sd=100)
 ```
 
-First, here's the default plot.
+Here's the default plot.
 
 ```{r}
 par.gh()
