@@ -26,9 +26,11 @@ plot.gh(X, Y)
 loessCI(X, Y)
 ```
 
+![Example0](example_main.png)
+
+
 Here are a few more examples, with the default in the top left for comparison.
 
-![Example0](example_main.png)
 
 ```{r}
 par.gh(mfrow=c(2,2), oma=c(3,3,3,3), mar=c(.1,2,2,.1))
