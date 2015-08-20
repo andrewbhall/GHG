@@ -1,7 +1,7 @@
 
 
 ### override default mgp in par to make better ticks
-par.gh <- function(..., mgp=c(0,.05,-.05)) {
+par.gh <- function(..., mgp=c(0,.05,.05)) {
   par(..., mgp=mgp)
 }
 
@@ -39,17 +39,18 @@ loessCI <- function(x, y, line_col="black", t_stat=NULL, span=NULL, trans_level=
 ### function to produce nice plots
 ### preserves most defaults through "..."
 ### defaults labels to blank, axes to missing, makes points look nice
-plot.gh <- function(..., xlab="", ylab="", xaxt="n", yaxt="n", pch=21, bg="gray80", col="black",bor_col="white", x_seq = NULL,  y_seq = NULL, bty=NULL, rect_col="gray90", do_axes=NULL, do_seq=T, outer.box=F, outer.box.col="black", grid_col="white", point.size=1.3) {
+plot.gh <- function(..., xlab="", ylab="", xaxt="n", yaxt="n", pch=21, bg="gray80", col="black",bor_col="white", x_seq = NULL,  y_seq = NULL, bty=NULL, rect_col="gray90", do_axes=NULL, do_seq=T, outer.box=F, outer.box.col="black", grid_col="white", point.size=1.3, remove.axis=F) {
   plot(..., xlab=xlab, ylab=ylab, xaxt=xaxt, yaxt=yaxt, pch=pch, bg=bg,  bty="n")
   rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = rect_col, border= bor_col)
   # Draw sequences in background
   if(do_seq!=F){
-    abline(v= seq(par("xaxp")[1], par("xaxp")[2], length.out=par("xaxp")[3]+1), col=grid_col)
-    abline(h= seq(par("yaxp")[1], par("yaxp")[2], length.out= par("yaxp")[3]+1), col=grid_col)
+    grid(col=grid_col, lty=2)
   }
   # Add axis
+  if (!remove.axis) {
   axis(side=1,lwd=0, lwd.ticks=1, tck=-0.01, col="white", col.axis="gray20", cex.axis=.8)
   axis(side=2,lwd=0, lwd.ticks=1, tck=-0.01, las=1, col="white", col.axis="gray20", cex.axis=.8)
+  }
   # Add points
   points(...,pch=21, bg=bg, col=col, lwd=1.5, cex=point.size)
   # Y/N add box around plot
