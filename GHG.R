@@ -20,21 +20,21 @@ add_legend <- function(...) {
   plot(0, 0, type='n', bty='n', xaxt='n', yaxt='n')
   legend(...)
 }
-
 ### Loess line with CI overlay
-loessCI <- function(x, y, line_col="black", t_stat=NULL, span=NULL, trans_level=NULL, poly_col="gray70"){
+loessCI <- function(x, y, line_col="black", t_stat=NULL, span=NULL, trans_level=NULL, poly_col="gray70", lwd=2){
   loess.color <- poly_col
   y_input <- y
   x_input <- x
   trans_level <- ifelse(is.null(trans_level),220, trans_level)
   t_stat <- ifelse(is.null(t_stat)==T,2,t_stat)
   comp_fit <- loess(y_input ~ x_input, span = ifelse(is.null(span)==T,0.6,span))
-  comp_out <- predict(comp_fit, sort(x_input), se=TRUE) 
+  comp_out <- predict(comp_fit, sort(x_input), se=TRUE)
   comp_lower <- comp_out $fit-t_stat* comp_out$se.fit
   comp_upper <- comp_out $fit+t_stat* comp_out$se.fit
   polygon(c(sort(x_input), rev(sort(x_input))),  c(comp_lower, rev(comp_upper)), col= ifelse(is.null(line_col)==T, makeTransparent(loess.color, trans_level), makeTransparent(loess.color, trans_level)), border= ifelse(is.null(line_col)==T, makeTransparent(loess.color, trans_level), makeTransparent(loess.color, trans_level)))
-  lines(x=x_input, y=comp_out$fit, col=line_col, lty=1, lwd=2, lend=2)
+  lines(x=x_input, y=comp_out$fit, col=line_col, lty=1, lend=2, lwd=lwd)
 }
+
 
 ### function to produce nice plots
 ### preserves most defaults through "..."
